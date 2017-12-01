@@ -1,0 +1,783 @@
+/* 活动报名分享 */
+body.h100 {
+    height: 100%;
+}
+
+.activity-sign-share {
+    width: 100%;
+    height: 100%;
+    background: url(../images/activity_share_bg.png) center no-repeat;
+    background-size: cover;
+}
+
+.activity-sign {
+    width: 80%;
+    height: 130px;
+    top: 50%;
+    margin: -65px 0 0 10%;
+    border-radius: 8px;
+    background: #fff;
+    color: #444;
+}
+
+.activity-sign h4 {
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 45px;
+
+}
+
+.banner {
+    overflow: hidden;
+    padding-bottom: 22.5px;
+    background: #fff;
+}
+
+.activity-sign a {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-top: 1px solid #f2f2f2;
+    display: block;
+    width: 100%;
+    height: 45px;
+    color: #0076ff;
+    font-size: 15px;
+    line-height: 45px;
+
+}
+
+.banner-title {
+    width: 273px;
+    height: 45px;
+    line-height: 45px;
+    color: #fff;
+    font-size: 15px;
+    text-align: center;
+    left: 50%;
+    margin-left: -136.5px;
+    bottom: 0;
+    background: url(../images/sign_title_bg.png) center no-repeat;
+    background-size: 273px 40px;
+}
+
+.sign-top p {
+    width: 100%;
+    background: #fff;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+}
+
+.sign-now {
+    display: block;
+    width: 130px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    font-size: 15px;
+    margin: 15px auto 10px;
+    background: #ff4f4c;
+    border-radius: 8px;
+}
+
+.sign-limit {
+    text-align: center;
+    width: 100%;
+    flaot: left;
+    margin-bottom: 20px;
+}
+
+.sign-limit em {
+    color: #ff4f4c;
+}
+
+.sign-describe {
+    color: #666;
+    margin-bottom: 60px;
+}
+
+.download-tip {
+    width: 100%;
+    background: #fff;
+    height: 50px;
+    line-height: 25px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    color: #666;
+}
+
+.download-tip .img-container {
+    width: 40px;
+    height: 40px;
+    margin: 5px 10px 0 0;
+}
+
+.download-tip .img-container img {
+    width: 100%;
+    display: block;
+}
+
+.download-tip .text-container p:first-child {
+    font-size: 16px;
+    line-height: 30px;
+}
+
+.download-tip .text-container p:last-child {
+    font-size: 12px;
+    line-height: 12px;
+}
+
+.download-btn {
+    display: block;
+    width: 100px;
+    font-size: 15px;
+    border-radius: 5px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background: #72d7f9;
+    color: #fff;
+    margin-top: 10px;
+}
+
+/* 活动报名分享 */
+
+/* 活动报名 */
+
+/* 活动报名 */
+
+/* 注册成功 */
+
+.reg-top {
+    width: 65%;
+    margin: 40px auto;
+    overflow: hidden;
+    max-width: 350px;
+}
+
+.reg-top h4 {
+    font-size: 18px;
+    width: 100%;
+    text-align: center;
+    color: #9b9b9b;
+    font-weight: normal;
+}
+
+.share-user {
+    width: 100%;
+    margin: 15px auto 0;
+}
+
+.share-user .img-container {
+    width: 65px;
+    height: 65px;
+}
+
+.share-user .img-container img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.share-arrow {
+    width: 70px;
+    left: 50%;
+    margin-left: -35px;
+    top: 25px;
+}
+
+.share-arrow img {
+    display: block;
+    float: left;
+    width: 100%;
+}
+
+.reg-download-box {
+    width: 85%;
+    margin: 0 auto;
+    color: #9b9b9b;
+    max-width: 600px;
+}
+
+.reg-download-box h5 {
+    font-size: 16px;
+    color: #9b9b9b;
+    font-weight: normal;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.reg-download-box .img-container {
+    width: 100%;
+    flaot: left;
+}
+
+.reg-download-box .img-container img {
+    display: block;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.reg-download-box .download-btn {
+    margin: 20px auto;
+}
+
+.receive img {
+    display: block;
+    float: left;
+    width: 40px;
+    height: 40px;
+    margin-right: 12px;
+}
+
+.receive {
+    -webkit-display: flex;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 70px;
+}
+
+.receive h4 {
+    line-height: 40px;
+    text-align: left;
+    width: auto;
+}
+
+/* 注册成功 */
+
+/* 邀请 */
+.invite-user {
+    width: 100%;
+    float: left;
+    margin: 30px auto 20px;
+    text-align: center;
+    font-size: 18px;
+    color: #4a4a4a;
+}
+
+.invite-user-info {
+    -webkit-display: flex;
+    display: flex;
+    justify-content: center;
+    height: 45px;
+    line-height: 45px;
+}
+
+.invite-user-info img {
+    display: block;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.invite-user p {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.discount {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.discount p {
+    color: #fff;
+    font-size: 18px;
+    position: absolute;
+    margin-bottom: 10px;
+    height: 20px;
+    line-height: 20px;
+    top: 50%;
+    margin-top: -10px;
+}
+
+.discount p.fore1 {
+    left: 20px;
+}
+
+.discount p:last-child {
+    right: 20px;
+}
+
+.discount img {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+.invite-form {
+    max-width: 600px;
+    margin: 15px auto;
+    width: 100%;
+    overflow: hidden;
+}
+
+.invite-form .in {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    float: left;
+    margin-bottom: 20px;
+}
+
+.invite-form .in .text {
+    width: 100%;
+    height: 40px;
+    box-sizing: border-box;
+    border: 1px solid #979797;
+    border-radius: 5px;
+}
+
+.invite-form .in .text[name="mobile"] {
+    background: #fff url(../images/mobile-icon.png) 7px center no-repeat;
+    background-size: 25px auto;
+    text-indent: 45px;
+}
+
+.invite-form .in .s-text {
+    width: 60%;
+}
+
+.invite-form .in .get-code {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    width: 35%;
+    border: 1px solid #72d7f9;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #72d7f9;
+    height: 40px;
+    display:inline-block;
+}
+
+.receive-now {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    line-height: 40px;
+    text-align: center;
+    background: #ff4f4c;
+    font-size: 18px;
+    color: #ffffff;
+    letter-spacing: 0.21px;
+    float: left;
+}
+
+.receive-now a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.receive-now a span {
+    text-decoration: line-through;
+    margin-right: 8px;
+}
+
+/* 邀请 */
+
+/* 赠送 */
+.give-title {
+    width: 100%;
+    float: left;
+    text-align: center;
+    color: #4a4a4a;
+    font-size: 15px;
+    line-height: 30px;
+    margin: 30px auto 20px;
+}
+
+.give-title h4 {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.share-block {
+    width: 90%;
+    height: auto;
+    float: left;
+    border-radius: 5px;
+    background: #fff;
+    padding: 10px 5%;
+    margin-bottom: 20px;
+    color: #666;
+    position: relative;
+
+}
+
+.share-block .s-title {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 7px;
+}
+
+.share-block .s-title h4 {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.share-block .s-title small {
+    font-size: 12px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.share-user-info {
+    width: 100%;
+    float: left;
+    height: 60px;
+    overflow: hidden;
+    line-height: 20px;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.share-user-info:last-child {
+    margin-bottom: 0;
+}
+
+.share-user-info .img-container {
+    width: 60px;
+    height: 60px;
+    float: left;
+}
+
+.share-user-info .img-container img {
+    display: block;
+    border-radius: 50%;
+    width: 100%;
+    height:100%;
+}
+
+.share-user-info .text-container {
+    margin-left: 70px;
+    height: 60px;
+    /*-webkit-display: flex;*/
+    /*display: flex;*/
+    align-items: center;
+}
+
+.share-describe {
+    font-size: 12px;
+    float: left;
+    width: 100%;
+}
+
+.share-summary {
+    font-size: 14px;
+    line-height: 14px;
+    width: 100%;
+    /*height: 14px;*/
+    height:75px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 10px;
+}
+
+.share-time {
+    position: absolute;
+    width: 100%;
+    font-size: 12px;
+    text-align: center;
+    left: 0;
+    bottom: -45px;
+}
+
+.music-title {
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.music-share .play {
+    position: absolute;
+    top: 10px;
+    right: 5%;
+    display: block;
+    width: 40px;
+    height: 40px;
+}
+
+.share-block .price {
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.share-block span {
+    margin-left: 20px;
+}
+
+.share-block .discount-price {
+    color: #d0021b;
+    font-size: 16px;
+}
+
+.album-wrapper {
+    margin-top: 30px;
+}
+
+.line-title {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px solid #d8d8d8;
+    margin-bottom: 40px;
+}
+
+.line-title p {
+    font-size: 16px;
+    color: #9b9b9b;
+    position: relative;
+    width: auto;
+    padding: 0 10px;
+    background: #f4f4f4;
+    top: 15px;
+    left: 50%;
+    width: 120px;
+    text-align: center;
+    margin-left: -65px;
+}
+
+.take-height {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    float: left;
+}
+
+/* 赠送 */
+
+/* 已领取的用户 */
+.already-receive {
+    width: 100%;
+    height: 100%;
+    background: url(../images/shadow-bg.png) center no-repeat;
+    background-size: cover;
+    display: flex;
+    -webkit-display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.already-receive-box {
+    width: 80%;
+    max-width: 600px;
+    background: #fff;
+    overflow: hidden;
+    border-radius: 5px;
+    color: #666;
+}
+
+.already-receive-box .a-title {
+    height: 60px;
+    line-height: 60px;
+    font-size: 18px;
+    float: left;
+    border-bottom: 1px solid #e2e2e2;
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.already-receive-box .a-item {
+    padding: 10px 0;
+    width: 100%;
+    float: left;
+    border-bottom: 1px solid #e2e2e2;
+    line-height: 25px;
+    font-size: 14px;
+
+}
+
+.already-receive-box .a-item h4 {
+    font-weight: normal;
+    font-size: 18px;
+}
+
+.go-listen {
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    background: #ff4f4c;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    float: left;
+    margin-top: 10px;
+}
+
+.go-listen a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+    color: #fff;
+}
+
+/* 已领取的用户 */
+
+/* 设置密码 */
+.password-form {
+    margin-top: 30px;
+}
+
+.password-form .in {
+    margin-bottom: 30px;
+}
+
+/* 设置密码 */
+
+/* 编辑个人资料 */
+.edit-info-form {
+    width: 100%;
+    float: left;
+    margin-top: 20px;
+}
+
+.upload-thumb {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 10px;
+    position: relative;
+    cursor: pointer;
+    color: #4a4a4a;
+}
+
+.upload-thumb input {
+    position: absolute;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+}
+
+.upload-thumb img {
+    width: 80px;
+    height: 80px;
+    display: block;
+    margin: 0 auto;
+    border:2px solid #fff;
+    border-radius: 50%;
+}
+
+.upload-thumb span {
+    display: block;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    float: left;
+    text-align: center;
+}
+
+.info-box {
+    width: 100%;
+    float: left;
+    background: #fff;
+    margin-bottom: 30px;
+}
+
+.info-box .in {
+    width: 90%;
+    padding: 0 5%;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #efefef;
+    color: #000;
+}
+
+.info-box .in label {
+    display: block;
+    width: 60px;
+    height: 20px;
+    line-height: 20px;
+    margin-top: 10px;
+    float: left;
+    border-right: 1px solid #333;
+}
+
+.info-box .in .text {
+    border: 0;
+    display: block;
+   /*  float: right;
+    text-align: right; */
+    height: 40px;
+    line-height: 40px;
+}
+button[type="submit"] {
+    width: 90%;
+    height: 40px;
+    border-radius: 5px;
+    line-height: 40px;
+    text-align: center;
+    background: #ff4f4c;
+    font-size: 18px;
+    color: #ffffff;
+    letter-spacing: 0.21px;
+    margin: 0 auto 50px;
+    border: 0;
+    display: block;
+}
+.edit-info-form button[type="submit"] {
+    width: 90%;
+    height: 40px;
+    border-radius: 5px;
+    line-height: 40px;
+    text-align: center;
+    background: #ff4f4c;
+    font-size: 18px;
+    color: #ffffff;
+    letter-spacing: 0.21px;
+    margin: 0 auto 50px;
+    border: 0;
+    display: block;
+}
+
+.edit-info-form .select-type {
+    padding: 20px 0;
+    -webkit-display: flex;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #efefef;
+}
+
+.edit-info-form .select-type img {
+    width: 40px;
+    height: 40px;
+}
+
+.edit-info-form .select-type .grey-line {
+    width: 1px;
+    height: 50px;
+    background: #979797;
+}
+
+.edit-info-form .child-type img {
+    width: 40px;
+    height: 48px;
+}
+
+/* 编辑个人资料 */
+
+/*修改样式 start*/
+.tex-over{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+/*修改样式 end*/

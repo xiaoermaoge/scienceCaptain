@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="description" content="科学队长">
+    <meta name="keywords" content="科学队长">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no"/>
+
+    <!-- css files -->
+    <link href="static/css/public.css" rel="stylesheet">
+    <link href="static/css/science.css" rel="stylesheet">
+    <style>
+        .play{
+            overflow:hidden;
+            background:url('static/images/play.png') no-repeat;
+            background-size:100% 100% !important;
+            outline: none;
+            border:none;
+            position: absolute;
+            top: 10px;
+            right: 5%;
+            display: block;
+        }
+        .close_aa{
+            overflow:hidden;
+            width:40px;
+            height:40px;
+            background:url('static/images/close_aa.png') no-repeat;
+            background-size:100% 100% !important;
+            outline: none;
+            border:none;
+            position: absolute;
+            top: 10px;
+            right: 5%;
+            display: block;
+        }
+        .music-title{
+            width:80%;
+            overflow:hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 主体内容 -->
+<div class="s-container album-wrapper">
+
+</div>
+<!-- 主体内容 -->
+
+
+<!-- 下载提示 -->
+<div class="download-tip">
+    <div class="container">
+        <div class="pull-left img-container">
+            <img src="static/images/thumb.png" alt="">
+        </div>
+        <div class="pull-left text-container">
+            <p>科学队长</p>
+            <p>和科学队长一起听科学!</p>
+        </div>
+        <a class="pull-right download-btn" href="https://www.pgyer.com/2MlP">立即下载</a>
+    </div>
+</div>
+<!-- 下载提示 -->
+</body>
+<script src="static/js/libs/jquery-2.2.3.min.js"></script>
+<script src="static/js/libs/comm.js"></script>
+<script type="text/javascript">
+$(function(){
+    var track_id;
+    function track_id(track_id) {
+        var reg = new RegExp("(^|&)" + track_id + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+    track_id=track_id('track_id');
+//	 var id=1199622333726766;
+	 var bodyEle = [];
+	$.post(http+'c/tracks_and_albums/share',{'track_id':track_id},function(result){
+        console.log(result);
+		//专辑详情
+		var data=result.result.album;
+		console.log(data);
+		//试听节目
+		var free=result.result.free_track;  
+		
+		bodyEle.push('<div class="m-b50 share-block" id="share-block">');
+		bodyEle.push(' <a class="full-cover-link" href="#"></a>');
+		bodyEle.push('	 <div class="pull-left s-title" id="s-title"><h4 id="title">'+data[0].data.name+'</h4><small>共'+data[0].data.item_count+'期</small> </div>');
+		bodyEle.push('	 <div class="share-summary" id="share-summary">'+data[0].data.sub_title+'</div>');
+		bodyEle.push('	<div class="pull-left share-user-info" id="pull-left">');
+		bodyEle.push('	 <div class="img-container"><img src="'+data[0].data.copyright_user_pic+'" alt="" ></div>');
+		bodyEle.push('	<div class="text-container" id="aDes"> '+data[0].data.copyright_user_desc+'</div>');
+		bodyEle.push('	 </div> ');
+//		bodyEle.push('	<div class="share-time">'+ new Date(data[0].updated_at)+'1分钟</div>');
+		bodyEle.push('	</div>');
+		
+		bodyEle.push(' <div class="m-b50 share-block music-share">');
+		if(free.length==0){
+			bodyEle.push('  <div class="music-title">暂无试听</div>');
+		}else{
+			bodyEle.push('  <div class="music-title">'+free[0].data.name+'</div>');	
+		}
+
+        bodyEle.push(`
+            <button type="button" id="play">
+                <audio id="aud" src=`+free[0].data.url+`>
+                </audio>
+            </button>
+        `);
+//		bodyEle.push('  <div class="share-time">1分钟前</div>');
+		bodyEle.push('    </div>');
+
+
+
+		$('.album-wrapper').html(bodyEle.join(''));
+        var h4=$('#title').text();
+
+        //            切换播放试听
+        $('#play').addClass('close_aa');
+        $('#play').click(function(){
+            $(this).toggleClass('close_aa').toggleClass('play');
+            function playPause(){
+                var audioEle = document.getElementById("aud");
+                if(audioEle.paused){
+                    audioEle.play();
+
+                }else{
+                    audioEle.pause();
+                }
+            }
+            playPause()
+        })
+        $('title').html('请你试听|'+h4);
+
+//清除自带样式
+        $("#s-title").children().each(function(){
+            $(this).attr("class","");
+            $(this).attr("style","");
+        })
+        $("#share-summary").children().each(function(){
+            $(this).attr("class","");
+            $(this).attr("style","");
+        })
+        $('#share-summary>p').addClass('tex-over');
+        $("#aDes").children().each(function(){
+            $(this).attr("class","");
+            $(this).attr("style","");
+        })
+		
+	 },"json");
+
+    //	获取行间样式
+
+
+
+})
+
+</script>
+</html>

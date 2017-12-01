@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>邀请你使用科学队长服务</title>
+    <meta name="description" content="科学队长">
+    <meta name="keywords" content="科学队长">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no"/>
+
+    <!-- css files -->
+    <link href="static/css/public.css" rel="stylesheet">
+    <link href="static/css/science.css" rel="stylesheet">
+    <style>
+        .d-absolute{
+            background:#fff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="data">
+        <!--
+        <div class="invite-user">
+            <div class="invite-user-info">
+                <img src="static/images/reg/thumb2.png" alt="">谷佳林
+            </div>
+            <p>正在邀请您使用《科学队长》</p>
+        </div>
+
+        <div class="d-relative discount">
+            <img src="static/images/invite-bg.png" alt="">
+            <p class="fore1">科学队长</p>
+            <p>9.5折券</p>
+        </div>
+        -->
+    </div>
+
+    <form class="invite-form">
+        <div class="in">
+            <input type="tel" name="mobile" id="phone" class="text" placeholder="请输入您的手机号" maxlength="11" minlength="11" pattern="">
+        </div>
+        <div class="d-relative in">
+            <input type="text" name='validateCode' class="text s-text" id="captcha" placeholder="输入验证码">
+            <button type="button" class="d-absolute get-code" onclick="getChapcha(this)">获取验证码</button>
+        </div>
+        <div class="receive-now">
+            <a href="javascript:;" onclick="get();">立即领取</a>
+        </div>
+    </form>
+
+</div>
+
+</body>
+<script src="static/js/libs/jquery-2.2.3.min.js"></script>
+<script src="static/js/libs/comm.js"></script>
+<script type="text/javascript">
+
+//    uid=1297989583831177
+    //    邀请人信息
+    var uid;
+    function uid(uid) {
+        var reg = new RegExp("(^|&)" + uid + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+    uid=uid('uid');
+    var bodyEle=[];
+    $.post(http+'lp/invite_info/show',{'uid':uid},function(result){
+        console.log(result);
+        var invite_user=result.result.invite_user[0];
+        var discount_info=result.result.discount_info[0];
+        console.log(invite_user);
+        bodyEle.push(`
+            <div class="invite-user">
+            <div class="invite-user-info">
+                <img src='`+invite_user.user_data.avatar_url+`' alt="">`+invite_user.user_data.nickname+`
+            </div>
+            <p>正在邀请您使用《科学队长》</p>
+        </div>
+
+        <div class="d-relative discount">
+            <img src="static/images/invite-bg.png" alt="">
+            <p class="fore1">科学队长</p>
+            <p>`+discount_info.data.discount+`元券</p>
+        </div>
+        `);
+        localStorage.setItem('uid',uid);
+        $('.data').html(bodyEle.join(''));
+    },'json')
+
+    //获取验证码
+
+    var phone=$('#phone').val();
+
+    var wait = 60;
+    function time(o) {
+//        console.log(o);
+        if (wait == 0) {
+
+            o.removeAttribute("disabled");
+            o.innerHTML = "获取验证码";
+            console.log(o+"inner");
+            wait = 60;
+            $('.d-absolute').css(
+                'background','#fff'
+            )
+        } else {
+            o.setAttribute("disabled", true);
+            o.innerHTML = wait + "秒后重新发送";
+            $('.d-absolute').css(
+                'background','#ddd'
+            )
+            wait--;
+            setTimeout(function() {
+                time(o)
+            }, 1000)
+        }
+    }
+    function getChapcha(o){
+        phone=$('#phone').val();
+        if(phone==""){
+            alert('请先填写您手机号码');
+        }else{
+            function checkPhone(){
+                if(!(/^1[34578]\d{9}$/.test(phone))){
+                    alert("手机号码有误，请重填");
+                    return false;
+                }else{
+                    $.post(http+'lp/spread_captcha/send',{'phone':phone},function(data){
+                        if(data.error_code==0){
+                            console.log(data);
+                            alert("获取成功");
+                            time(o,wait);
+                        }else{
+                            alert("获取失败，请重新获取验证码");
+                            console.log(data);
+                        }
+                    },"json");
+                }
+            }
+            checkPhone();
+        }
+    }
+
+
+    //    领取
+    var referral_uid=uid;
+
+
+    var captcha;
+
+    function get(){
+        captcha=$('#captcha').val();
+        if(phone==''){
+            alert('请填写手机号');
+        }else{
+            if(captcha==''){
+                alert('请输写验证码');
+            }else{
+                $.post(http+'lp_spread_user/check',{'phone':phone},function(result){
+                    console.log('调用检测注册接口');
+                    if(result.error_code==0){
+                        $.post(http+'lp/user/register',{'referral_uid':referral_uid,"phone":phone},function(data){
+                            if(data.error_code==0){
+                                console.log('调用赠送领取接口');
+                                console.log(data);
+                            console.log(data.error_code);
+                                window.location.href='bindSuccess.html';
+                            console.log(获取成功);
+                            }else{
+                                alert(data.error_msg);
+                            }
+
+                        })
+                    }else{
+                            alert('您还没有注册，请先注册账号');
+                            window.location.href='setPassword.html'+"?phone="+phone+'&referral_uid='+referral_uid;
+                    }
+                })
+            }
+        }
+    }
+
+
+
+//    缓存验证码
+    phone=$('#phone').val();
+    console.log(phone);
+    captcha=$('#captcha').val();
+    console.log(captcha);
+    localStorage.setItem('captcha',captcha);
+    localStorage.setItem('referral_uid',referral_uid);
+</script>
+</html>

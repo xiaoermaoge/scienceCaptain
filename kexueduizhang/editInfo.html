@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑个人资料</title>
+    <meta name="description" content="科学队长">
+    <meta name="keywords" content="科学队长">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no"/>
+
+    <!-- css files -->
+    <link href="static/css/public.css" rel="stylesheet">
+    <link href="static/css/science.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/ion.calendar.css">
+    <style>
+    *{ margin:0; padding:0;}
+
+body { font:12px/1.5 Arial; color:#666; background:#fff;}
+
+ul,li{ list-style:none;}
+
+img{border:0 none;}
+
+/*---------------------------------------demo css--------------------------------------------*/
+
+.date_selector, .date_selector *{width: auto;height: auto;border: none;background: none;margin: 0;padding: 0;text-align: left;text-decoration: none;}
+
+.date_selector{background:#fbfbfb;border: 1px solid #ccc;padding: 10px;margin:0;margin-top:-1px;position: absolute;z-index:100000;display:none;border-radius: 3px;box-shadow: 0 0 5px #aaa;box-shadow:0 2px 2px #ccc; width:220px;left:80px !important;}
+
+.date_selector_ieframe{position: absolute;z-index: 99999;display: none;}
+
+.date_selector .nav{width: 17.5em;}
+
+.date_selector .nav p{clear: none;}
+
+.date_selector .month_nav, .date_selector .year_nav{margin: 0 0 3px 0;padding: 0;display: block;position: relative;text-align: center;}
+
+.date_selector .month_nav{float: left;width: 55%;}
+
+.date_selector .year_nav{float: right;width: 42%;margin-right: -8px;}
+
+.date_selector .month_name, .date_selector .year_name{font-weight: bold;line-height: 20px;}
+
+.date_selector .button{display: block;position: absolute;top: 0;width:18px;height:18px;line-height:16px;font-weight:bold;color:#5985c7;text-align: center;font-size:12px;overflow:hidden;border: 1px solid #ccc;border-radius:2px;}
+
+.date_selector .button:hover, .date_selector .button.hover{background:#5985c7;color: #fff;cursor: pointer;border-color:#3a930d;}
+
+.date_selector .prev{left: 0;}
+
+.date_selector .next{right: 0;}
+
+.date_selector table{border-spacing: 0;border-collapse: collapse;clear: both;margin: 0; width:220px;}
+
+.date_selector th, .date_selector td{width: 2.5em;height: 2em;padding: 0 !important;text-align: center !important;color: #666;font-weight: normal;}
+
+.date_selector th{font-size: 12px;}
+
+.date_selector td{border:1px solid #f1f1f1;line-height: 2em;text-align: center;white-space: nowrap;color:#5985c7;background: #fff;}
+
+.date_selector td.today{background: #eee;}
+
+.date_selector td.unselected_month{color: #ccc;}
+
+.date_selector td.selectable_day{cursor: pointer;}
+
+.date_selector td.selected{background:#2b579a;color: #fff;font-weight: bold;}
+
+.date_selector td.selectable_day:hover, .date_selector td.selectable_day.hover{background:#5985c7;color: #fff;}
+.s2{
+    width:75px;
+    font-size:10px;
+}
+.s3{
+    width:90px;
+    font-size:10px;
+}
+.s1{
+    font-size:10px;
+}
+/*-----------------------------------------------------------------------------------*/
+    
+    </style>
+
+</head>
+<body>
+
+<form class="edit-info-form">
+
+    <div class="upload-thumb">
+        <input type="file" class="text" name="attachment" id="file" accept="image/gif,image/jpeg,image/png,image/jpg" placeholder="" onchange="fileUpload(this)">
+        <img src="static/images/thumb2.png" alt="" id="headurl">
+        <span>点击上传头像</span>
+    </div>
+
+    <div class="info-box">
+        <div class="in">
+            <label>昵 称</label>
+            <input type="text" class="text" name="nickname" id="nickname" placeholder="请输入昵称">
+        </div>
+        <div class="select-type" id="psex">
+            <img src="static/images/icon-man.png" alt="" name="0" onclick="getSex(this)">
+            <div class="grey-line"></div>
+            <img src="static/images/female_default.png" alt=""  name="1" onclick="getSex(this)">
+        </div>
+       
+        <div class="in">
+            <label>生 日</label>
+            <input type="text" class="text" style="width:226px;" name="nickname" id="bir" placeholder="请输入生日">
+           
+        </div>
+        <div class="in">
+            <label >城 市</label>
+           
+				<select id="s_province" class="s1" name="s_province"></select>  
+			
+			    <select id="s_city" class="s2" name="s_city" ></select>  
+			
+			    <select id="s_county" class="s3" name="s_county" onchange="showArea()"></select>
+			
+			    <script class="resources library" src="static/js/libs/area.js" type="text/javascript"></script>
+		        <script type="text/javascript">_init_area();</script>
+                <div id="show"></div>
+          
+            <input type="text" class="text" name="nickname" id="city">
+        </div>
+        <div class="in">
+            <label>个性签名</label>
+            <input type="text" class="text" name="nickname" id="sign" placeholder="请输入个性签名">
+        </div>
+    </div>
+
+    <div class="info-box">
+        <div class="in">
+            宝宝信息
+        </div>
+        <div class="select-type child-type" id="csex">
+            <img src="static/images/male.png" alt="" name="0" onclick="getSex(this)">
+            <div class="grey-line"></div>
+            <img src="static/images/girl_default.png" alt="" name="1" onclick="getSex(this)">
+        </div>
+        <div class="in">
+            <label>生 日</label>
+            <input type="text"  style="width:226px;" class="text" name="nickname" id="cbir" placeholder="请输入生日">
+        </div>
+    </div>
+
+   
+    <input type="hidden" value="" id="imgresult">
+    <input type="hidden" value="0" id="parent">
+    <input type="hidden" value="0" id="child">
+</form>
+ <button type="submit" onclick="submit()">完成</button>
+<canvas style="display: none;" id="dealImgCanvas"></canvas>
+
+</body>
+<script src="static/js/libs/jquery-2.2.3.min.js"></script>
+<script src="http://www.jq22.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="static/js/libs/jquery.date_input.pack.js"></script>
+<script src="static/js/libs/comm.js"></script>
+<script>
+$(function(){
+	$('#bir').date_input();
+	
+	$('#cbir').date_input();
+	
+});
+</script>
+ <script type="text/javascript">
+
+var Gid  = document.getElementById ;
+var showArea = function(){
+
+	$('#show').innerHTML = "<h3>省" + $('#s_province').value + " - 市" + 	
+
+	$('#s_city').value + " - 县/区" + 
+
+	$('#s_county').value + "</h3>"
+}
+
+</script>
+<script type="text/javascript">
+  function fileUpload(obj){
+			var dealImgCanvas = $('#dealImgCanvas')[0];
+			var file = obj.files[0];
+			var url = null;
+			if (window.createObjectURL != undefined) { // basic
+				url = window.createObjectURL(file);
+                console.log(url);
+			} else if (window.URL != undefined) { // mozilla(firefox)
+				url = window.URL.createObjectURL(file);
+			} else if (window.webkitURL != undefined) { // webkit or chrome
+				url = window.webkitURL.createObjectURL(file);
+			}
+			var img = new Image();
+			img.onload=function(){
+					dealImgCanvas.width = img.width;
+					dealImgCanvas.height = img.height;
+					var cxt = dealImgCanvas.getContext("2d");
+					var canvasImg = cxt.drawImage(img,0,0);
+				    var canvasSrc = dealImgCanvas.toDataURL(canvasImg);
+				    sendImg0(file,canvasSrc);
+				    cxt.clearRect(0,0,img.width,img.height);
+			};
+			img.src = url;
+	
+  };
+  
+  function sendImg0(file,canvasSrc) {
+		$('#headurl')[0].src=canvasSrc;
+		var fd = new FormData();
+		fd.append("file", file);
+		var xhr = new XMLHttpRequest();
+		xhr.open('POST', http+'sys/image/upload', true);
+		
+		xhr.onreadystatechange = function (){
+			if(xhr.readyState == 4 ){
+				if (xhr.status == 200) {
+					var jsObject = eval('('+xhr.responseText+')');
+					var path = jsObject.result.file_download_url;
+					$('#imgresult').val(path);
+//					console.log(path)
+                    localStorage.setItem('path',path);
+				}else{
+					 console.log("失败了");
+				}
+			}
+		};
+		
+		
+		xhr.send(fd);
+	};
+  function submit(){
+//      var phone=localStorage.getItem('phone');
+      var phone;
+      function phone(phone) {
+          var reg = new RegExp("(^|&)" + phone + "=([^&]*)(&|$)", "i");
+          var r = window.location.search.substr(1).match(reg);
+          if (r != null) return unescape(r[2]); return null;
+      }
+      phone=phone('phone');
+      var referral_uid;
+      function referral_uid(referral_uid) {
+          var reg = new RegExp("(^|&)" + referral_uid + "=([^&]*)(&|$)", "i");
+          var r = window.location.search.substr(1).match(reg);
+          if (r != null) return unescape(r[2]); return null;
+      }
+      referral_uid=referral_uid('referral_uid');
+      var password=parseInt(localStorage.getItem('password'));
+	  var nickname=$('#nickname').val();  
+	      pbir=$('#bir').val();
+          s_city=$('#s_city').val();
+	      sign=$('#sign').val();
+	      cbir=$('#cbir').val();
+          bir=$('#bir').val();
+//          alert(city);
+
+//	      uid=1196592016195599;
+	      headUrl=$('#imgresult').val();
+	  var psex=$('#parent').val();
+	  var csex=$('#child').val();
+	  var param={   'avatar_url':headUrl,
+			        'baby_birthday':cbir,
+			        'baby_gender':csex,
+                    'birthday':bir,
+	                'city':s_city,
+	                'gender':psex,
+	                'nickname':nickname,
+	                'sign':sign,
+                    'phone':phone,
+                    'password':password,
+                    'referral_uid':referral_uid
+			     };
+	  $.post(http+'lp/commission_user/register',param,function(result){
+		  if(result.error_code==0){
+		      var error_code=result.error_code;
+              localStorage.setItem('error_code',error_code);
+			  alert("修改成功");
+//			  console.log(result.error_code+'true');
+			  window.location.href="bindSuccess.html"
+		  }else{
+			  alert(result.error_msg);
+//              console.log(result.error_code+"false");
+//              console.log(result);
+		  }
+		  },"json")
+	  };
+  var i="";
+  function getSex(obj){
+	 var parent= $(obj).parent().attr("id");
+	 i= $(obj).attr("name");
+	 if(parent=="psex"){
+		 if(i==0){
+			$(obj).attr("src",'static/images/icon-man.png');
+			$(obj).siblings('img').attr("src",'static/images/female_default.png');
+		 }else{
+			 $(obj).attr("src",'static/images/icon-female.png');
+			 $(obj).siblings('img').attr("src",'static/images/man_default.png');
+		 }
+		 $("#parent").val(i);
+	 }else{
+		 if(i==0){
+			$(obj).attr("src",'static/images/male.png');
+			$(obj).siblings('img').attr("src",'static/images/girl_default.png');
+		 }else{
+			 $(obj).attr("src",'static/images/female.png');
+			 $(obj).siblings('img').attr("src",'static/images/boy_default.png');
+		 }
+		 $("#child").val(i);
+	 }
+	
+  }
+  
+  
+  
+</script>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>收到一份礼物</title>
+    <meta name="description" content="科学队长">
+    <meta name="keywords" content="科学队长">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no"/>
+
+    <!-- css files -->
+    <link href="static/css/public.css" rel="stylesheet">
+    <link href="static/css/science.css" rel="stylesheet">
+    <style>
+        .input{
+            width:100%;
+            margin:10px;
+            margin-left:0;
+            margin-right:0;
+        }
+        .input input{
+            width:100%;
+            height:40px;
+            border-radius: 5px;
+            border:1px solid #ddd;
+        }
+        p{
+            margin:0 !important;
+            padding:0 !important;
+        }
+    </style>
+</head>
+<body>
+<!--
+<div class="s-container">
+
+    <div class="text-center give-title">
+        <h4>谷佳林 购买节目请您收听</h4>
+        <p>“赠吾友，愿不再惧怕每个不眠之夜”</p>
+    </div>
+
+    <div class="m-b50 share-block">
+        <a class="full-cover-link" href="#"></a>
+        <div class="pull-left s-title">
+            <h4>动物生存秘籍</h4>
+            <small>共52期</small>
+        </div>
+
+        <div class="pull-left share-user-info">
+            <div class="img-container">
+                <img src="static/images/reg/thumb1.png" alt="">
+            </div>
+            <div class="text-container">
+                赵丽蓉 鸟类学家，中国观鸟会创始人，北京师范大学副教授
+            </div>
+        </div>
+        <div class="share-describe">
+            摘要：Lorem ipsum dolor sit amet, consectetur adipiscing elit.Aeneaneuismodbibendumlaoreet. Proin
+        </div>
+    </div>
+    <div class="input" style="width: 100%">
+        <input type="text" placeholder="手机号码" style="width:100%">
+    </div>
+    <div class="receive-now">
+        <a href="#"><span>￥99</span>免费收听</a>
+    </div>
+-->
+
+
+</div>
+<script src="static/js/libs/jquery-2.2.3.min.js"></script>
+<script src="static/js/libs/comm.js"></script>
+<script type="text/javascript">
+//    var phone=15608354786;
+//    var present_id=1260808773370470;
+    var present_id;
+    function present_id(present_id) {
+        var reg = new RegExp("(^|&)" + present_id + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+    present_id=present_id('present_id');
+    var bodyEle=[];
+   $.post(http+'lp/gift_share/detail',{'present_id':present_id},function(result){
+       var gift_info=result.result.gift_info;
+       var obj=gift_info[0].data;
+       var coupon_info=result.result.coupon_info;
+       var coupon_info_data=coupon_info[0].data;
+       bodyEle.push(`
+            <div class="s-container">
+
+    <div class="text-center give-title">
+        <h4>`+coupon_info_data.nickname+` 购买节目请您收听</h4>
+        <p>`+coupon_info_data.desc+`</p>
+    </div>
+
+    <div class="m-b50 share-block">
+        <a class="full-cover-link" href="#"></a>
+        <div class="pull-left s-title">
+            <h4>`+obj.name+`</h4>
+            <small>共`+obj.item_count+`期</small>
+        </div>
+
+        <div class="pull-left share-user-info">
+            <div class="img-container">
+                <img src=`+obj.copyright_user_pic+` alt="">
+            </div>
+            <div class="text-container">
+                `+obj.copyright_user_desc+`
+            </div>
+        </div>
+        <div class="share-describe">
+            摘要：`+obj.sub_title+`
+        </div>
+    </div>
+    <div class="input" style="width: 100%">
+        <input type="text" placeholder="手机号码" style="width:100%" maxlength="11" id="phone">
+    </div>
+    <div class="receive-now" id="receive-now">
+        <a href="#"><span>￥`+coupon_info_data.item_price+`</span>免费收听</a>
+    </div>
+
+
+
+</div>
+       `);
+       $('body').html(bodyEle.join(''));
+
+       $('#receive-now').click(function(){
+           var phone=$('.input input').val();
+//           console.log(phone);
+           if(phone==''){
+               alert('请填写手机号');
+           }else{
+
+               //       验证手机格式
+               function checkPhone(){
+                   var phone = document.getElementById('phone').value;
+                   if(!(/^1[34578]\d{9}$/.test(phone))){
+                       alert("手机号码有误，请重填");
+                       return false;
+                   }else{
+                       $.post(http+'c/present/take.json',{'phone':phone,'present_id':present_id},function(result){
+                  console.log(result);
+                           if(result.error_code==0){
+                               window.location.href='receiveSuccess.html'
+                               console.log(result.error_code+"error_code等于0");
+                           }else{
+                               console.log(result.error_msg+"error_code不等于0");
+                               var msg=result.error_msg;
+                               localStorage.setItem('msg',msg);
+                               localStorage.setItem('present_id',present_id);
+                               window.location.href='already_buy.html'
+                           }
+                       })
+                   }
+               }
+               checkPhone();
+           }
+
+       })
+    },'json')
+</script>
+</body>
+</html>

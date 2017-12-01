@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="description" content="科学队长">
+    <meta name="keywords" content="科学队长">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no"/>
+
+    <link rel="stylesheet" href="static/css/public.css">
+    <link rel="stylesheet" href="static/css/commodity_show.css">
+</head>
+<body>
+    <div class="push">
+
+    </div>
+    <!-- 下载提示 -->
+    <div class="download-tip">
+        <div class="container">
+            <div class="pull-left img-container">
+                <img src="static/images/thumb.png" alt="">
+            </div>
+            <div class="pull-left text-container">
+                <p>科学队长</p>
+                <p>和科学队长一起听科学!</p>
+            </div>
+            <a class="pull-right download-btn" href="https://www.pgyer.com/2MlP">立即下载</a>
+        </div>
+    </div>
+    <script src="static/js/libs/jquery-2.2.3.min.js"></script>
+    <script src="static/js/libs/comm.js"></script>
+    <script>
+
+        var id;
+        var bodyEle=[];
+        function id(id) {
+            var reg = new RegExp("(^|&)" + id + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+        id=id('id');
+        $.post(http+'c/good/show',{'id':id},function(result){
+            var data=result.result[0].data;
+            bodyEle.push(`
+                    <div class="img">
+                        <img src=`+data.title_pics[0]+` alt="">
+                    </div>
+                    <div class="text">
+                        `+data.name+`
+                    </div>
+                    <div class="btn">
+                        <a href="#">
+                            <span class="line-throungh">
+                                <span>¥`+data.real_price+`</span>
+                                立即购买
+                            </span>
+                        </a>
+                    </div>
+                    <div class="alert" style="text-align: center">
+                        下载科学队长APP后进行购买
+                    </div>
+            `);
+            $('.push').html(bodyEle.join(''));
+
+            console.log();
+            $('title').html("推荐商品|"+$('.text').text())
+        })
+
+    </script>
+</body>
+</html>

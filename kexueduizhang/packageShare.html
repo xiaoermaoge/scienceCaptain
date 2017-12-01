@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="description" content="科学队长">
+    <meta name="keywords" content="科学队长">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no"/>
+
+    <!-- css files -->
+    <link href="static/css/public.css" rel="stylesheet">
+    <link href="static/css/science.css" rel="stylesheet">
+    <style>
+        .play{
+            overflow:hidden;
+            background:url('static/images/play.png') no-repeat;
+            background-size:100% 100% !important;
+            outline: none;
+            border:none;
+            position: absolute;
+            top: 10px;
+            right: 5%;
+            display: block;
+        }
+        .close_aa{
+            overflow:hidden;
+            width:40px;
+            height:40px;
+            background:url('static/images/close_aa.png') no-repeat;
+            background-size:100% 100% !important;
+            outline: none;
+            border:none;
+            position: absolute;
+            top: 10px;
+            right: 5%;
+            display: block;
+        }
+        .music-title{
+            width:80%;
+            overflow:hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+    <script src="../../ji_cow/qet/penguin_biz/penguin_biz/index/page/js/page-rigid-ad.js"></script>
+</head>
+<body>
+
+<!-- 主体内容 -->
+
+<!-- <div class="s-container album-wrapper">
+
+    <div class="m-b50 share-block">
+        <a class="full-cover-link" href="#"></a>
+        <div class="pull-left s-title">
+            <h4>科学队长-动物系列</h4>
+        </div>
+
+        <div class="price">
+            动物学家带你深入了解动物生存秘籍，带你深入了解动物生存的秘密       <span>原价：¥399</span>
+        </div>
+
+        <div class="discount-price">
+            尝鲜价：¥299  （2月17-3月21）
+        </div>
+
+        <div class="share-time">1分钟前</div>
+    </div>
+
+    <div class="m-b50 share-block music-share">
+        <div class="music-title">试听：鸟儿为什么喜欢唱歌</div>
+        <img src="static/images/play.png" class="play" alt="">
+        <div class="share-time">1分钟前</div>
+    </div>
+</div> -->
+
+<!-- <div class="d-relative line-title">
+    <p>包含3张专辑</p>
+</div> -->
+
+<!-- <div class="s-container album-wrapper">
+
+    <div class="m-b50 share-block">
+        <a class="full-cover-link" href="#"></a>
+        <div class="pull-left s-title">
+            <h4>动物生存秘籍</h4>
+            <small>共52期</small>
+        </div>
+        <div class="share-summary">动物学家带你深入了解动物生存秘籍动物学家带你深入了解动物生存秘籍</div>
+        <div class="pull-left share-user-info">
+            <div class="img-container">
+                <img src="static/images/reg/thumb1.png" alt="">
+            </div>
+            <div class="text-container">
+                赵丽蓉 鸟类学家，中国观鸟会创始人，北京师范大学副教授
+            </div>
+        </div>
+    </div>
+
+</div> -->
+<!-- 主体内容 -->
+
+
+<!-- 下载提示 -->
+<!-- 占位 -->
+<div class="take-height"></div>
+<div class="download-tip">
+    <div class="container">
+        <div class="pull-left img-container">
+            <img src="static/images/thumb.png" alt="">
+        </div>
+        <div class="pull-left text-container">
+            <p>科学队长</p>
+            <p>和科学队长一起听科学!</p>
+        </div>
+        <a class="pull-right download-btn" href="https://www.pgyer.com/2MlP">立即下载</a>
+    </div>
+</div>
+<!-- 下载提示 -->
+</body>
+<script src="static/js/libs/jquery-2.2.3.min.js"></script>
+<script type="text/javascript">
+$(function(){
+
+//	var id=1177780025884695;
+    var album_set_id;
+	var bodyEle=[];
+    function album_set_id(album_set_id) {
+        var reg = new RegExp("(^|&)" + album_set_id + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+    album_set_id=album_set_id('album_set_id');
+	$.post('http://118.89.232.160:28033/c/package/show',{'album_set_id':album_set_id},function(result){
+		//专辑详情
+		var data=result.result.package[0].data;
+		console.log(data);
+		//试听节目
+		var free=result.result.free_track;
+//		console.log(free);
+		//套餐详情
+		bodyEle.push('<div class="s-container album-wrapper">');
+		bodyEle.push('  <div class="m-b50 share-block">');
+		bodyEle.push('	  <a class="full-cover-link" href="#"></a>');
+	    bodyEle.push('   <div class="pull-left s-title">');
+	    bodyEle.push('        <h4 id="title">'+data.name+'</h4>');
+	    bodyEle.push('   </div>');
+	    
+	    bodyEle.push(' <div class="price">'+data.sub_title+'       <span>原价：¥'+data.public_price+'</span> </div>');
+//        bodyEle.push(' <div class="discount-price">尝鲜价：¥'+data.real_price+'  （2月17-3月21） </div>');
+//        bodyEle.push(' <div class="share-time">1分钟前</div>');
+        bodyEle.push('</div>');
+        
+        //试听
+        if(free.length>0){
+        bodyEle.push('<div class="m-b50 share-block music-share">');
+        bodyEle.push('<div class="music-title">试听：'+free[0].data.name+'</div>');
+        bodyEle.push(`
+            <button type="button" id="play">
+                <audio id="aud" src=`+free[0].data.url+`>
+                </audio>
+            </button>
+        `);
+//        bodyEle.push('<div class="share-time">1分钟前</div>');
+        bodyEle.push('</div>');
+       
+        }
+        bodyEle.push('</div>');
+        bodyEle.push(' <div class="d-relative line-title"> <p>包含'+data.album_count+'张专辑</p></div>');
+        //获取套餐下 的专辑列表
+        $.post('http://118.89.232.160:28033/package/get_album/list',{'album_set_id':album_set_id},function(result){
+        	 for(var i=0;i<result.result.length;i++){
+        		 var obj=result.result[i].data;
+        		 console.log(obj);
+        		 console.log(data);
+                 bodyEle.push(' <div class="s-container album-wrapper">');
+            	 bodyEle.push('<div class="m-b50 share-block">');
+                 bodyEle.push('     <a class="full-cover-link" href="#"></a>');
+                 bodyEle.push(' <div class="pull-left s-title">');
+                 bodyEle.push('<h4>'+obj.name+'</h4>');
+                 bodyEle.push('<small>共'+obj.item_count+'期</small>');
+                 bodyEle.push(' </div>');
+                 bodyEle.push('<div class="share-summary">'+data.sub_title+'</div>');
+                 bodyEle.push('<div class="pull-left share-user-info">');
+                 bodyEle.push('<div class="img-container">');
+                 bodyEle.push(' <img src='+obj.copyright_user_pic+' alt="">');
+                 bodyEle.push('</div>');
+                 bodyEle.push(' <div class="text-container">'+obj.copyright_user_desc+'</div>');
+                 bodyEle.push('   </div>');
+                 bodyEle.push(' </div>');
+                 bodyEle.push('</div>');
+            	 }
+
+
+        	 $('.take-height').html(bodyEle.join(''));
+            var h4=$('#title').text();
+//            console.log(h4);
+//            切换播放试听
+            $('#play').addClass('close_aa');
+            $('#play').click(function(){
+                $(this).toggleClass('close_aa').toggleClass('play');
+                function playPause(){
+                    var audioEle = document.getElementById("aud");
+                    if(audioEle.paused){
+                        audioEle.play();
+
+                    }else{
+                        audioEle.pause();
+                    }
+                }
+                playPause()
+            })
+            $('title').html('分享|科学队长-'+h4);
+        },'json');
+	 }
+	 ,"json");
+
+})
+
+
+</script>
+</html>

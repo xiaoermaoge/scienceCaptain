@@ -1,0 +1,549 @@
+/*通用类*/
+html {
+    height: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+    margin: 0 auto;
+    font-size: 14px;
+    font-family: "Microsoft Yahei", Adobe Heiti Std, Arial, sans-serif;
+    color: #444;
+    background: #f4f4f4;
+    height: auto;
+    overflow-x: hidden;
+    cursor: pointer;
+}
+
+body.h100 {
+    height: 100%;
+}
+
+img {
+    border: none;
+}
+
+a {
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+em {
+    font-style: normal;
+}
+
+input {
+    outline: none;
+}
+
+input[type="text"] {
+    text-indent: 0.5em;
+    -webkit-appearance: none;
+}
+
+textarea{
+    -webkit-appearance: none;
+}
+
+input.sub,
+label {
+    border: none;
+    cursor: pointer;
+}
+
+input, button, select, textarea {
+    outline: none
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+
+button {
+    cursor: pointer;
+}
+
+textarea {
+    resize: none;
+}
+
+div.clear {
+    font: 0px Arial;
+    line-height: 0;
+    height: 0;
+    clear: both;
+}
+
+.font-grey {
+    color: #666;
+}
+
+.font-white {
+    color: #fff;
+}
+
+.font-yellow {
+    color: #ffff00;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.ta_r {
+    text-align: right !important;
+}
+
+.justify {
+    overflow: hidden;
+    text-align: justify;
+}
+
+.btn {
+    display: block;
+    height: 35px;
+    line-height: 35px;
+    width: 140px;
+    border-radius: 17.5px;
+    border: 0;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    font-size: 15px;
+    margin: 0 auto;
+}
+
+.btn a {
+    display: block;
+    color: #fff;
+    width: 100%;
+}
+
+.icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+
+.fa {
+    display: block;
+    width: 40px;
+    height: 40px;
+    background: url(../images/public/icon-map.png) no-repeat;
+    float: left;
+}
+
+.fa-user {
+    background-position: 0 -10px;
+    background-size: 100% auto;
+}
+
+.fa-mobile {
+    background-position: 0 -77px;
+    background-size: 100% auto;
+}
+
+.fa-clock {
+    background-position: 0 -145px;
+    background-size: 100% auto;
+}
+
+.fa-location {
+    background-position: 0 -214px;
+    background-size: 100% auto;
+}
+
+.fa-type {
+    background-position: 0 -281px;
+    background-size: 100% auto;
+}
+
+.fa-note {
+    background-position: 0 -350px;
+    background-size: 100% auto;
+}
+
+.fa-house {
+    background-position: 0 -396px;
+    background-size: 100% auto;
+}
+
+.fa-img {
+    background-position: 0 -440px;
+    background-size: 100% auto;
+}
+
+.fa-room {
+    background-position: 0 -486px;
+    background-size: 100% auto;
+}
+
+.icon-user {
+    background: url(../images/public/i-user.png) center no-repeat;
+    background-size: auto 18px;
+}
+
+.icon-password {
+    background: url(../images/public/i-password.png) center no-repeat;
+    background-size: auto 18px;
+}
+
+.icon-eye {
+    background: url(../images/public/i-eye.png) center no-repeat;
+    background-size: auto 15px;
+}
+
+.icon-code {
+    background: url(../images/public/i-code.png) center no-repeat;
+    background-size: auto 16px;
+}
+
+.icon-address {
+    background: url(../images/public/i-address.png) center no-repeat;
+    background-size: auto 20px;
+}
+
+.icon-message {
+    background: url(../images/public/i-message.png) center no-repeat;
+    background-size: auto 18px;
+}
+
+.icon-message2 {
+    background: url(../images/public/i-message2.png) center no-repeat;
+    background-size: auto 18px;
+}
+
+.icon-message3 {
+    height: 30px;
+    width: 30px;
+    background: url(../images/public/i-message3.png) center 10px no-repeat;
+    background-size: 18px auto;
+}
+
+.icon-zan {
+    height: 30px;
+    width: 30px;
+    background: url(../images/public/i-zan.png) center 7px no-repeat;
+    background-size: 14px auto;
+}
+
+.btn-lg {
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 15px;
+}
+
+.shadow-btn:hover {
+    box-shadow: 2px 2px 3px #ccc, -2px -2px 3px #ccc;
+}
+
+.m-b10 {
+    margin-bottom: 10px;
+}
+
+.m-b50 {
+    margin-bottom: 50px !important;
+}
+
+.hide {
+    display: none;
+}
+
+.text-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.d-static {
+    position: static !important;
+}
+
+.d-fixed {
+    position: fixed !important;
+}
+
+.d-relative {
+    position: relative !important;
+}
+
+.d-absolute {
+    position: absolute !important;
+}
+
+.pull-left {
+    float: left !important;
+}
+
+.pull-right {
+    float: right !important;
+}
+
+.width-auto {
+    width: auto !important;
+}
+
+.margin-no {
+    margin: 0 !important;
+}
+
+.margin-auto {
+    margin: 0 auto;
+}
+
+.padding-no {
+    padding: 0 !important;
+}
+
+.border-no {
+    border: 0 !important;
+}
+
+.border-radius-no {
+    border-radius: 0 !important;
+}
+
+.hide {
+    display: none !important;
+}
+
+.full-cover-link {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.bg-white {
+    background: #fff;
+}
+
+.bg-pink {
+    background: #ff5c7f;
+}
+
+.bg-grey {
+    background: #f4f3ef;
+}
+
+.bg-green {
+    background: #9ac937;
+}
+
+.bg-dark-grey {
+    background: #9e9e9e !important;
+}
+
+.bg-dark {
+    background: rgb(73, 89, 105);
+}
+
+.bg-blue {
+    background: #007feb;
+}
+
+.bg-purple {
+    background: #d15291;
+}
+
+.bg-orange {
+    background: #ff9a23;
+}
+
+.bg-light-blue {
+    background: #aed7ff;
+    color: #007feb;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.w100 {
+    width: 100% !important;
+    float: left;
+}
+
+.line {
+    width: auto;
+    height: 1px;
+    background: #ccc;
+    float: left;
+}
+
+.o-visible {
+    overflow: visible !important;
+}
+
+.o-hidden {
+    overflow: hidden !important;
+}
+
+.s-container {
+    width: 83%;
+    margin: 0 auto;
+    overflow: hidden;
+    max-width: 700px;
+}
+
+.container {
+    width: 94%;
+    margin: 0 auto;
+    overflow: hidden;
+    max-width: 750px;
+}
+
+/* header start */
+.header {
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    background: #7a91ee;
+    color: #fff;
+    text-align: center;
+    font-size: 17px;
+    position: relative;
+}
+
+.header .href-back {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 12.5px;
+    left: 5%;
+}
+
+.header .message-tip {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 7.5px;
+    right: 5%;
+    background: url(../images/public/i-message2.png) center no-repeat;
+    background-size: 23px auto;
+}
+
+.header .message-tip span {
+    position: absolute;
+    font-size: 8px;
+    /* padding: 5px; */
+    color: #fff;
+    background: #ff5f81;
+    border-radius: 50%;
+    width: 17px;
+    height: 17px;
+    line-height: 17px;
+    top: -5px;
+    right: -7px;
+}
+
+.header .href-back img {
+    display: block;
+    width: 10px;
+    margin-top: 2px;
+}
+
+/* header end */
+
+/* footer Start */
+.height-site {
+    width: 100%;
+    height: 70px;
+    float: left;
+}
+
+.footer {
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    /*box-shadow: 0 -1px 1px #ccc;*/
+    color: #000;
+    background: #fff;
+}
+
+.footer ul {
+    width: 100%;
+    -webkit-display: flex;
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer li {
+    min-width: 80px;
+    text-align: center;
+    position: relative;
+    background-size: 40px auto;
+    height: 50px;
+    line-height: 75px;
+    font-size: 12px;
+}
+
+.footer li.fore1 {
+    background: url(../images/public/f-icon1.png) center 5px no-repeat;
+    background-size: auto 20px;
+}
+
+.footer li.fore1.on {
+    background: url(../images/public/f-icon1-on.png) center 5px no-repeat;
+    background-size: auto 20px;
+}
+
+.footer li.fore2 {
+    background: url(../images/public/f-icon2.png) center 5px no-repeat;
+    background-size: auto 20px;
+}
+
+.footer li.fore2.on {
+    background: url(../images/public/f-icon2-on.png) center 5px no-repeat;
+    background-size: auto 20px;
+}
+
+.footer li.fore3 {
+    background: url(../images/public/f-icon3.png) center 5px no-repeat;
+    background-size: auto 20px;
+}
+
+.footer li.fore3.on {
+    background: url(../images/public/f-icon3-on.png) center 5px no-repeat;
+    background-size: auto 20px;
+}
+
+.footer li.fore4 {
+    background: url(../images/public/f-icon4.png) center 5px no-repeat;
+    background-size: auto 20px;
+}
+
+.footer li.fore4.on {
+    background: url(../images/public/f-icon4-on.png) center 5px no-repeat;
+    background-size: auto 20px;
+}
+
+/* footer end */
+
+/* tab */
+.tab-content {
+    display: none;
+}
+
+.tab-content.on {
+    display: block;
+}
+
+
+
+
